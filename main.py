@@ -6,7 +6,7 @@ from exceptions import UnsupportedReportError
 
 def main():
     parser = argparse.ArgumentParser(description="Обработка csv файлов")
-    parser.add_argument("--file", nargs="+", required=True, help="Путь к файлу/файлам")
+    parser.add_argument("--files", nargs="+", required=True, help="Путь к файлу/файлам")
     parser.add_argument("--report", required=True, choices=["average-rating"], help="Тип отчета")
     args = parser.parse_args()
 
@@ -15,7 +15,7 @@ def main():
     if args.report == "average-rating":
         report = AverageRatingReport()
         result = report.generate(data)
-        print_table(result, headers=["brand", "rating"])
+        print_table(result)
     else:
         raise UnsupportedReportError(f"Неизвестный тип отчета: {args.report}")
 

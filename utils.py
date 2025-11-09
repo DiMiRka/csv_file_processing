@@ -16,5 +16,26 @@ def read_csv_files(file_list: List[str]) -> List[Dict[str, str]]:
     return data
 
 
-def print_table(data: List[Dict[str, str]], headers: List[str]) -> None:
-    print(tabulate(data, headers=headers, tablefmt="grid"))
+def print_table(data: List[Dict[str, str]]) -> None:
+    if not data:
+        print("Нет данных для отображения.")
+        return
+
+    for i, row in enumerate(data, 1):
+        row["№"] = i
+
+    ordered_data = [
+        {"№": row["№"], "brand": row["brand"], "rating": row["rating"]}
+        for row in data
+    ]
+
+    print(
+        tabulate(
+            ordered_data,
+            headers="keys",
+            tablefmt="simple_outline",
+            numalign="center",
+            stralign="center"
+        )
+    )
+
