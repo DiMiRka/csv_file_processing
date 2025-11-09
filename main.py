@@ -1,5 +1,7 @@
 import argparse
-from tabulate import tabulate
+from reports.average_rating import AverageRatingReport
+from utils import read_csv_files, print_table
+from exceptions import UnsupportedReportError
 
 
 def main():
@@ -8,4 +10,15 @@ def main():
     parser.add_argument("--report", required=True, choices=["average-rating"], help="Тип отчета")
     args = parser.parse_args()
 
-    # entries = parse_log_files(args.file, args.date)
+    data = read_csv_files(args.files)
+
+    if args.report == "average-rating":
+        report = AverageRatingReport()
+        result = report.generate(data)
+        print_table(result, headers=["brand", "rating"])
+    else:
+        raise UnsupportedReportError(f"Неизвестный тип отчета: {args.report}")
+
+
+if __name__ == "__main__":
+    main()
