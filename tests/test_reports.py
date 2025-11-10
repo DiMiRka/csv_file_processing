@@ -3,7 +3,6 @@ from typing import List, Dict
 import pytest
 
 from reports import average_rating_report
-from utils import print_table
 
 
 @pytest.fixture
