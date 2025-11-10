@@ -1,5 +1,5 @@
 import argparse
-from reports.average_rating import AverageRatingReport
+from reports import average_rating_report
 from utils import read_csv_files, print_table
 from exceptions import UnsupportedReportError
 
@@ -13,8 +13,7 @@ def main():
     data = read_csv_files(args.files)
 
     if args.report == "average-rating":
-        report = AverageRatingReport()
-        result = report.generate(data)
+        result = average_rating_report.generate(data)
         print_table(result)
     else:
         raise UnsupportedReportError(f"Неизвестный тип отчета: {args.report}")

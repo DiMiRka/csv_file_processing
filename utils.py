@@ -16,7 +16,7 @@ def read_csv_files(file_list: List[str]) -> List[Dict[str, str]]:
     return data
 
 
-def print_table(data: List[Dict[str, str]]) -> None:
+def print_table(data: List[Dict]) -> None:
     if not data:
         print("Нет данных для отображения.")
         return
@@ -38,4 +38,3 @@ def print_table(data: List[Dict[str, str]]) -> None:
             stralign="center"
         )
     )
-
