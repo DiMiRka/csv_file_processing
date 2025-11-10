@@ -16,7 +16,7 @@ def read_csv_files(file_list: List[str]) -> List[Dict[str, str]]:
     return data
 
 
-def print_table(data: List[Dict]) -> None:
+def print_table(data: List[Dict], report: str) -> None:
     if not data:
         print("Нет данных для отображения.")
         return
@@ -24,9 +24,15 @@ def print_table(data: List[Dict]) -> None:
     for i, row in enumerate(data, 1):
         row["№"] = i
 
-    ordered_data = [
-        {"№": row["№"], "brand": row["brand"], "rating": row["rating"]} for row in data
-    ]
+    ordered_data: List[Dict]
+    if report == "average-rating":
+        ordered_data = [
+            {"№": row["№"], "brand": row["brand"], "rating": row["rating"]} for row in data
+        ]
+    elif report == "average-price":
+        ordered_data = [
+            {"№": row["№"], "brand": row["brand"], "prise": row["prise"]} for row in data
+        ]
 
     print(
         tabulate(
