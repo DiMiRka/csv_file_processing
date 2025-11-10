@@ -24,14 +24,14 @@ def print_table(data: List[Dict], report: str) -> None:
     for i, row in enumerate(data, 1):
         row["№"] = i
 
-    ordered_data: List[Dict]
+    ordered_data: List[Dict] = []
     if report == "average-rating":
         ordered_data = [
             {"№": row["№"], "brand": row["brand"], "rating": row["rating"]} for row in data
         ]
     elif report == "average-price":
         ordered_data = [
-            {"№": row["№"], "brand": row["brand"], "prise": row["prise"]} for row in data
+            {"№": row["№"], "brand": row["brand"], "price": row["price"]} for row in data
         ]
 
     print(
