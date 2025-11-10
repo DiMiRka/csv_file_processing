@@ -25,8 +25,7 @@ def print_table(data: List[Dict]) -> None:
         row["№"] = i
 
     ordered_data = [
-        {"№": row["№"], "brand": row["brand"], "rating": row["rating"]}
-        for row in data
+        {"№": row["№"], "brand": row["brand"], "rating": row["rating"]} for row in data
     ]
 
     print(
@@ -35,6 +34,6 @@ def print_table(data: List[Dict]) -> None:
             headers="keys",
             tablefmt="simple_outline",
             numalign="center",
-            stralign="center"
+            stralign="center",
         )
     )

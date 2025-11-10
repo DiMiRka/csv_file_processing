@@ -18,6 +18,7 @@ class AverageRatingReport(BaseReport):
 
         avg_ratings = [
             {"brand": brand, "rating": round(sum(values) / len(values), 2)}
-            for brand, values in brand_ratings.items() if values
+            for brand, values in brand_ratings.items()
+            if values
         ]
         return sorted(avg_ratings, key=lambda x: x["rating"], reverse=True)

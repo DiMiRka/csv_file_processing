@@ -7,7 +7,9 @@ from exceptions import UnsupportedReportError
 def main():
     parser = argparse.ArgumentParser(description="Обработка csv файлов")
     parser.add_argument("--files", nargs="+", required=True, help="Путь к файлу/файлам")
-    parser.add_argument("--report", required=True, choices=["average-rating"], help="Тип отчета")
+    parser.add_argument(
+        "--report", required=True, choices=["average-rating"], help="Тип отчета"
+    )
     args = parser.parse_args()
 
     data = read_csv_files(args.files)
