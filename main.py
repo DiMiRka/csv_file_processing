@@ -8,7 +8,10 @@ def main():
     parser = argparse.ArgumentParser(description="Обработка csv файлов")
     parser.add_argument("--files", nargs="+", required=True, help="Путь к файлу/файлам")
     parser.add_argument(
-        "--report", required=True, choices=["average-rating", "average-price"], help="Тип отчета"
+        "--report",
+        required=True,
+        choices=["average-rating", "average-price"],
+        help="Тип отчета",
     )
     args = parser.parse_args()
 
